@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camp Norse 2025 - Summer Camp Memories</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .header {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h1 {
+        font-size: 3rem;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .header .subtitle {
+        font-size: 1.2rem;
+        color: #7f8c8d;
+        margin-bottom: 20px;
+      }
+
+      .header .description {
+        font-size: 1rem;
+        color: #34495e;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .week-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .week-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .week-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .week-header {
+        border-bottom: 3px solid #e74c3c;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+      }
+
+      .week-dates {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+
+      .week-title {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        margin-bottom: 5px;
+      }
+
+      .week-grades {
+        color: #7f8c8d;
+        font-size: 0.9rem;
+        font-style: italic;
+      }
+
+      .week-description {
+        color: #34495e;
+        margin-bottom: 25px;
+        line-height: 1.7;
+      }
+
+      .photo-gallery {
+        margin-top: 20px;
+      }
+
+      .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .photo-placeholder {
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        border: 2px dashed #ced4da;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6c757d;
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .photo-placeholder:hover {
+        background: linear-gradient(135deg, #e9ecef, #dee2e6);
+        transform: scale(1.05);
+      }
+
+      .photo-placeholder::before {
+        content: "📸";
+        font-size: 1.5rem;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .status-full {
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      .status-half-day {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      .camp-info {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        margin-top: 30px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+
+      .camp-info h2 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .camp-info ul {
+        list-style: none;
+        margin-bottom: 20px;
+      }
+
+      .camp-info li {
+        padding: 8px 0;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .camp-info li::before {
+        content: "🎯";
+        position: absolute;
+        left: 0;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 2rem;
+        }
+
+        .week-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>🏕️ Camp Norse 2025</h1>
+        <p class="subtitle">Summer Day Camp Memories</p>
+        <p class="description">
+          Camp Norse inspired and challenged the next generation of thinkers and
+          leaders while offering them a glimpse into the opportunities for their
+          future. Nearly 200 campers participated in themed camps between
+          June-August, experiencing hands-on activities, meeting NKU students,
+          and engaging in interactive learning on NKU's campus.
+        </p>
+      </header>
+
+      <div class="week-grid">
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">June 9-13</div>
+            <h2 class="week-title">Board Game Design</h2>
+            <p class="week-grades">Grades 4-6</p>
+          </div>
+          <p class="week-description">
+            Students studied, analyzed, and created their own games based on a
+            topic of their choosing. The game development process deepened
+            abstract and critical thinking skills while furthering literacy,
+            art, problem solving, research, and cooperation skills. Students
+            created their own Roll & Move games and presented them to peers.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">Add Photo<br />Game Design</div>
+              <div class="photo-placeholder">Add Photo<br />Testing Games</div>
+              <div class="photo-placeholder">Add Photo<br />Presentations</div>
+              <div class="photo-placeholder">Add Photo<br />Group Work</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">June 16-18</div>
+            <h2 class="week-title">Life Skills Lab</h2>
+            <p class="week-grades">Grades 4-6</p>
+          </div>
+          <p class="week-description">
+            A holistic approach to prepare young folks for the challenges of
+            adulthood. Covering twelve essential modules, including financial
+            literacy, job application strategies, and effective communication.
+            The program integrated theoretical knowledge with hands-on training
+            to empower students with comprehensive tools for successful
+            adulting.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">
+                Add Photo<br />Financial Literacy
+              </div>
+              <div class="photo-placeholder">
+                Add Photo<br />Job Applications
+              </div>
+              <div class="photo-placeholder">Add Photo<br />Communication</div>
+              <div class="photo-placeholder">Add Photo<br />Life Skills</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">June 23-27</div>
+            <h2 class="week-title">Vikings & Valkyries</h2>
+            <p class="week-grades">Grades 2-3</p>
+          </div>
+          <p class="week-description">
+            Campers explored the history of the people who inspired NKU's mascot
+            Victor E. Viking. They made Viking age crafts, played games, learned
+            about Norse mythology, and created their own stories inspired by the
+            Norse. This was an adventure through ancient Scandinavian culture
+            and legends.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">Add Photo<br />Viking Crafts</div>
+              <div class="photo-placeholder">Add Photo<br />Norse Games</div>
+              <div class="photo-placeholder">Add Photo<br />Storytelling</div>
+              <div class="photo-placeholder">
+                Add Photo<br />Viking Costumes
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">June 30 - July 3</div>
+            <h2 class="week-title">America250: Kentucky's Role</h2>
+            <span class="status-full">FULL</span>
+            <p class="week-grades">All Grades</p>
+          </div>
+          <p class="week-description">
+            Campers unlocked history through games as we celebrated 250 years of
+            America! Using game-based learning, they explored the American
+            Revolution, women's suffrage, the Underground Railroad, and the
+            Mississippi Flood of 1927. The week concluded with presentations of
+            original games inspired by Kentucky history. Funded in part by the
+            Kentucky Historical Society.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">Add Photo<br />History Games</div>
+              <div class="photo-placeholder">Add Photo<br />Game Design</div>
+              <div class="photo-placeholder">Add Photo<br />Presentations</div>
+              <div class="photo-placeholder">
+                Add Photo<br />Kentucky History
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">July 7-11</div>
+            <h2 class="week-title">Storytelling Through Comics</h2>
+            <p class="week-grades">Grades 4-6</p>
+          </div>
+          <p class="week-description">
+            Students examined and explored comic literature to further literacy
+            and introduce them to book culture. Campers enhanced their reading
+            and art skills while engaging in discussions about texts that helped
+            them tackle problems in their own lives and local communities. They
+            created their own comic stories and characters.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">Add Photo<br />Comic Creation</div>
+              <div class="photo-placeholder">
+                Add Photo<br />Character Design
+              </div>
+              <div class="photo-placeholder">Add Photo<br />Storyboarding</div>
+              <div class="photo-placeholder">Add Photo<br />Final Comics</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">July 14-18</div>
+            <h2 class="week-title">Creative Inspiration</h2>
+            <p class="week-grades">Grades 4-6</p>
+          </div>
+          <p class="week-description">
+            Designed to spark curiosity and cultivate innovation as participants
+            explored creativity in "work." Students learned new skills through
+            activities that spanned the creative arts, discovering various ways
+            to express themselves and think creatively about problem-solving in
+            different fields.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">Add Photo<br />Art Projects</div>
+              <div class="photo-placeholder">Add Photo<br />Creative Work</div>
+              <div class="photo-placeholder">Add Photo<br />Innovation</div>
+              <div class="photo-placeholder">Add Photo<br />Final Projects</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">July 21-25</div>
+            <h2 class="week-title">Science of the Human Body</h2>
+            <span class="status-half-day">Half Day - Morning</span>
+            <p class="week-grades">Grades 4-6</p>
+          </div>
+          <p class="week-description">
+            The camp dived into the basics of bodily functions including
+            mechanics of movement, senses like sight and sound, and internal
+            systems working together. Students learned through activities like
+            measuring heart rate after exercise and calculating energy
+            expenditure. They also learned about proper nutrition and
+            maintaining lifelong health and fitness.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">Add Photo<br />Body Systems</div>
+              <div class="photo-placeholder">Add Photo<br />Heart Rate</div>
+              <div class="photo-placeholder">Add Photo<br />Nutrition</div>
+              <div class="photo-placeholder">Add Photo<br />Exercise</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">July 21-25</div>
+            <h2 class="week-title">Science of Superpowers</h2>
+            <span class="status-half-day">Half Day - Afternoon</span>
+            <p class="week-grades">Grades 2-3</p>
+          </div>
+          <p class="week-description">
+            Students explored how famous superheroes modeled their identities
+            after creatures with unique abilities using engineering and design.
+            With 12 hands-on lessons, biology, engineering, and technology
+            concepts were discussed through comic book heroes. Campers also
+            identified real-life community heroes and what makes someone a true
+            hero.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">
+                Add Photo<br />Superhero Science
+              </div>
+              <div class="photo-placeholder">Add Photo<br />Engineering</div>
+              <div class="photo-placeholder">
+                Add Photo<br />Community Heroes
+              </div>
+              <div class="photo-placeholder">Add Photo<br />Hero Projects</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">July 28-August 1</div>
+            <h2 class="week-title">Emerging Leaders Camp</h2>
+            <p class="week-grades">Grades 4-6</p>
+          </div>
+          <p class="week-description">
+            Campers spent the week developing their unique leadership style by
+            learning about the elements of leadership, assessing their own
+            strengths, and learning about leaders throughout history. They
+            participated in service-learning projects to benefit local community
+            partners, putting their leadership skills into practice.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">
+                Add Photo<br />Leadership Activities
+              </div>
+              <div class="photo-placeholder">
+                Add Photo<br />Service Projects
+              </div>
+              <div class="photo-placeholder">Add Photo<br />Team Building</div>
+              <div class="photo-placeholder">
+                Add Photo<br />Community Service
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-card">
+          <div class="week-header">
+            <div class="week-dates">August 4-8</div>
+            <h2 class="week-title">Vikings & Valkyries</h2>
+            <p class="week-grades">Grades 4-6</p>
+          </div>
+          <p class="week-description">
+            The final week returned to exploring the history of the people who
+            inspired NKU's mascot Victor E. Viking. This session for older
+            campers included more advanced Viking age crafts, games, and deeper
+            exploration of Norse mythology. Students created complex stories
+            inspired by Norse culture and legends.
+          </p>
+          <div class="photo-gallery">
+            <h3>📸 Camp Photos</h3>
+            <div class="photo-grid">
+              <div class="photo-placeholder">
+                Add Photo<br />Advanced Crafts
+              </div>
+              <div class="photo-placeholder">Add Photo<br />Viking Games</div>
+              <div class="photo-placeholder">Add Photo<br />Norse Stories</div>
+              <div class="photo-placeholder">Add Photo<br />Final Projects</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="camp-info">
+        <h2>About Camp Norse 2025</h2>
+        <p><strong>Camp included:</strong></p>
+        <ul>
+          <li>Meeting NKU students to learn about college life</li>
+          <li>Hands-on and experiential activities</li>
+          <li>Interactive learning opportunities</li>
+        </ul>
+        <p><strong>Additional Details:</strong></p>
+        <ul>
+          <li>Camp ran 9:00 am - 4:00 pm with pre- and post-camp options</li>
+          <li>All activities took place on NKU's campus</li>
+          <li>Nearly 200 campers participated across all weeks</li>
+          <li>Half-day camps were offered in partnership with CINSAM</li>
+        </ul>
+      </div>
+
+      <footer class="footer">
+        <p>
+          🎓 Camp Norse 2025 - Inspiring the Next Generation of Thinkers and
+          Leaders
+        </p>
+        <p>Northern Kentucky University Summer Camp Program</p>
+      </footer>
+    </div>
+
+    <script>
+      // Add click functionality to photo placeholders
+      document.querySelectorAll(".photo-placeholder").forEach((placeholder) => {
+        placeholder.addEventListener("click", function () {
+          const input = document.createElement("input");
+          input.type = "file";
+          input.accept = "image/*";
+          input.onchange = function (e) {
+            const file = e.target.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                placeholder.style.backgroundImage = `url(${e.target.result})`;
+                placeholder.style.backgroundSize = "cover";
+                placeholder.style.backgroundPosition = "center";
+                placeholder.textContent = "";
+                placeholder.style.border = "none";
+              };
+              reader.readAsDataURL(file);
+            }
+          };
+          input.click();
+        });
+      });
+
+      // Add hover effects and animations
+      document.querySelectorAll(".week-card").forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-10px) scale(1.02)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0) scale(1)";
+        });
+      });
+    </script>
+  </body>
+</html>
